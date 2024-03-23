@@ -2907,11 +2907,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\student\\Desktop\\praktik\\praktik.csproj",
+      "projectUniqueName": "C:\\Users\\student\\Desktop\\PRACTICA\\praktik.csproj",
       "projectName": "praktik",
-      "projectPath": "C:\\Users\\student\\Desktop\\praktik\\praktik.csproj",
+      "projectPath": "C:\\Users\\student\\Desktop\\PRACTICA\\praktik.csproj",
       "packagesPath": "C:\\Users\\student\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\student\\Desktop\\praktik\\obj\\",
+      "outputPath": "C:\\Users\\student\\Desktop\\PRACTICA\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2982,7 +2982,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

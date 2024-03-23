@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace praktik
 {
@@ -32,6 +33,18 @@ namespace praktik
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            erlog.Text = "";
+            ermail.Text = "";
+            erpass.Text = "";
+            erpass2.Text = "";
+            LoginBox.BorderBrush = new SolidColorBrush(Colors.Gray);
+      emailbox.BorderBrush = new SolidColorBrush(Colors.Gray);
+            passwordBox.BorderBrush = new SolidColorBrush(Colors.Gray);
+            passwordBox1.BorderBrush = new SolidColorBrush(Colors.Gray);
+
+            int errors = 0;
+
+
             var login = LoginBox.Text;
 
             var email = emailbox.Text;
@@ -45,46 +58,66 @@ namespace praktik
             var user_exists = context.Users.FirstOrDefault(x => x.Login == login);
             if (user_exists is not null)
             {
-                MessageBox.Show("Пользователь с таким логином уже зарегистрирован");
+                succc.Text = ("Пользователь с таким логином уже зарегистрирован");
                 return;
             }
-            else if (login.Length == 0)
+            do
             {
-                MessageBox.Show("Логин не может быть пустым");
-            }
-            else if (email.Length == 0)
-            {
-                MessageBox.Show("Email не может быть пустым");
-            }
-            else if  (!Regex.IsMatch(email, @"^[a-zA-Z0-9_.+-]+@(mail\.ru|gmail\.com|yandex\.ru)$"))
+                if (login.Length == 0)
+                {
+                    erlog.Text = ("Логин не может быть пустым");
+                    LoginBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                    errors++;
+                }
+                if (email.Length == 0)
+                {
+                    ermail.Text = ("Email не может быть пустым");
+                    emailbox.BorderBrush = new SolidColorBrush(Colors.Red);
+                    errors++;
+                }
+                if (!Regex.IsMatch(email, @"^[a-zA-Z0-9_.+-]+@(mail\.ru|gmail\.com|yandex\.ru)$"))
+                    emailbox.BorderBrush = new SolidColorBrush(Colors.Red);
+                errors++;
 
-            {
-                MessageBox.Show("Email не содержит домена.");
+                if (email.Length == 0)
+                {
+
+                    ermail.Text = ("Email не содержит домена.");
+                    emailbox.BorderBrush = new SolidColorBrush(Colors.Red);
+                    errors++;
+                }
+
+                if (password.Length < 8)
+                {
+                    erpass.Text = ("Пороль не может быть меньше 8 символов");
+                    passwordBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                    errors++;
+                }
+                if (pass != password)
+                {
+                    erpass2.Text = ("Пороли не совпадают");
+                    passwordBox1.BorderBrush = new SolidColorBrush(Colors.Red);
+                    errors++;
+                }
+                if (errors == 0)
+                {
+                    var user = new User { Login = login, Email = email, Password = pass };
+                    context.Users.Add(user);
+                    context.SaveChanges();
+                    succc.Text = ("Вы успешно зарегистрировались");
+                }
+
+
+                break;
             }
-            
-            else if (password.Length  < 8 )
-            {
-                MessageBox.Show("Пороль не может быть меньше 8 символов");
-            }
-            else if (pass != password)
-            {
-                MessageBox.Show("Пороли не совпадают");
-            }
-            else
-            {
-                var user = new User { Login = login, Email = email, Password = pass };
-                context.Users.Add(user);
-                context.SaveChanges();
-                MessageBox.Show("Вы успешно зарегистрировались");
-            }
-           
+            while (errors != 0);
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-           MainWindow MainWindow = new MainWindow();
-            MainWindow.Show();
+            private void Button_Click_1(object sender, RoutedEventArgs e)
+            {
+                this.Hide();
+                MainWindow MainWindow = new MainWindow();
+                MainWindow.Show();
+            }
         }
     }
-}
+

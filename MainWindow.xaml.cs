@@ -40,10 +40,10 @@ namespace praktik
             var user = context.Users.SingleOrDefault(x=> x.Login == login && x.Password == password);
             if (user == null)
             {
-                MessageBox.Show("Неправильный логин и пороль!");
+                erro.Text = ("Неправильный логин или пороль!");
                 return;
             }
-            MessageBox.Show("Вы успешно вошли в аккаунт!");
+            su.Text = ("Вы успешно вошли в аккаунт!");
                 
         }
 
