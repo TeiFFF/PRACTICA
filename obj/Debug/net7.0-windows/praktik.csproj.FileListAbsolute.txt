@@ -120,9 +120,10 @@ C:\Users\student\Desktop\PRACTICA\obj\Debug\net7.0-windows\praktik.GeneratedMSBu
 C:\Users\student\Desktop\PRACTICA\obj\Debug\net7.0-windows\praktik.AssemblyInfoInputs.cache
 C:\Users\student\Desktop\PRACTICA\obj\Debug\net7.0-windows\praktik.AssemblyInfo.cs
 C:\Users\student\Desktop\PRACTICA\obj\Debug\net7.0-windows\praktik.csproj.CoreCompileInputs.cache
-C:\Users\student\Desktop\PRACTICA\obj\Debug\net7.0-windows\praktik.csproj.CopyComplete
 C:\Users\student\Desktop\PRACTICA\obj\Debug\net7.0-windows\praktik.dll
 C:\Users\student\Desktop\PRACTICA\obj\Debug\net7.0-windows\refint\praktik.dll
 C:\Users\student\Desktop\PRACTICA\obj\Debug\net7.0-windows\praktik.pdb
 C:\Users\student\Desktop\PRACTICA\obj\Debug\net7.0-windows\praktik.genruntimeconfig.cache
 C:\Users\student\Desktop\PRACTICA\obj\Debug\net7.0-windows\ref\praktik.dll
+C:\Users\Student\Desktop\PRACTICA\obj\Debug\net7.0-windows\praktik.sourcelink.json
+C:\Users\Student\Desktop\PRACTICA\obj\Debug\net7.0-windows\praktik.csproj.Up2Date

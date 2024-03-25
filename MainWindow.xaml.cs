@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace praktik
 {
@@ -27,24 +28,24 @@ namespace praktik
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Environment.Exit(0);    
+            Environment.Exit(0);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var login = LoginBox.Text;
-                var password = PasswordBox.Text;
+            var password = PasswordBox.Text;
 
             var context = new AppDbContext();
 
-            var user = context.Users.SingleOrDefault(x=> x.Login == login && x.Password == password);
+            var user = context.Users.SingleOrDefault(x => x.Login == login && x.Password == password);
             if (user == null)
             {
                 erro.Text = ("Неправильный логин или пороль!");
                 return;
             }
             su.Text = ("Вы успешно вошли в аккаунт!");
-                
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -53,5 +54,6 @@ namespace praktik
             registration registration = new registration();
             registration.Show();
         }
+     
+            }
     }
-}

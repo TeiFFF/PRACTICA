@@ -37,28 +37,28 @@ namespace praktik
             ermail.Text = "";
             erpass.Text = "";
             erpass2.Text = "";
-            LoginBox.BorderBrush = new SolidColorBrush(Colors.Gray);
-      emailbox.BorderBrush = new SolidColorBrush(Colors.Gray);
-            passwordBox.BorderBrush = new SolidColorBrush(Colors.Gray);
-            passwordBox1.BorderBrush = new SolidColorBrush(Colors.Gray);
+            Login.BorderBrush = new SolidColorBrush(Colors.Gray);
+      Email.BorderBrush = new SolidColorBrush(Colors.Gray);
+            Password.BorderBrush = new SolidColorBrush(Colors.Gray);
+            Password1.BorderBrush = new SolidColorBrush(Colors.Gray);
 
             int errors = 0;
 
 
-            var login = LoginBox.Text;
+            var login = Login.Text;
 
-            var email = emailbox.Text;
+            var email = Email.Text;
 
-            var pass = passwordBox.Text;
+            var pass = Password.Text;
 
-            var password = passwordBox1.Text;
+            var password = Password1.Text;
 
             var context = new AppDbContext();
 
             var user_exists = context.Users.FirstOrDefault(x => x.Login == login);
             if (user_exists is not null)
             {
-                succc.Text = ("Пользователь с таким логином уже зарегистрирован");
+                succsefull.Text = ("Пользователь с таким логином уже зарегистрирован");
                 return;
             }
             do
@@ -66,51 +66,54 @@ namespace praktik
                 if (login.Length == 0)
                 {
                     erlog.Text = ("Логин не может быть пустым");
-                    LoginBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                    Login.BorderBrush = new SolidColorBrush(Colors.Red);
                     errors++;
                 }
                 if (email.Length == 0)
                 {
                     ermail.Text = ("Email не может быть пустым");
-                    emailbox.BorderBrush = new SolidColorBrush(Colors.Red);
+                    Email.BorderBrush = new SolidColorBrush(Colors.Red);
                     errors++;
                 }
                 if (!Regex.IsMatch(email, @"^[a-zA-Z0-9_.+-]+@(mail\.ru|gmail\.com|yandex\.ru)$"))
-                    emailbox.BorderBrush = new SolidColorBrush(Colors.Red);
-                errors++;
+                {
+                    Email.BorderBrush = new SolidColorBrush(Colors.Red);
+                    errors++;
+                }
+
 
                 if (email.Length == 0)
                 {
 
                     ermail.Text = ("Email не содержит домена.");
-                    emailbox.BorderBrush = new SolidColorBrush(Colors.Red);
+                    Email.BorderBrush = new SolidColorBrush(Colors.Red);
                     errors++;
                 }
 
                 if (password.Length < 8)
                 {
                     erpass.Text = ("Пороль не может быть меньше 8 символов");
-                    passwordBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                    Password.BorderBrush = new SolidColorBrush(Colors.Red);
                     errors++;
                 }
-                if (pass != password)
+                if (password != password)
                 {
                     erpass2.Text = ("Пороли не совпадают");
-                    passwordBox1.BorderBrush = new SolidColorBrush(Colors.Red);
+                    Password1.BorderBrush = new SolidColorBrush(Colors.Red);
                     errors++;
                 }
-                if (errors == 0)
-                {
-                    var user = new User { Login = login, Email = email, Password = pass };
-                    context.Users.Add(user);
-                    context.SaveChanges();
-                    succc.Text = ("Вы успешно зарегистрировались");
-                }
-
 
                 break;
             }
             while (errors != 0);
+
+            if (errors == 0)
+            {
+                var user = new User { Login = login, Email = email, Password = pass };
+                context.Users.Add(user);
+                context.SaveChanges();
+                succsefull.Text = ("Вы успешно зарегистрировались");
+            }
         }
             private void Button_Click_1(object sender, RoutedEventArgs e)
             {

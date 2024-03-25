@@ -11,8 +11,8 @@ using praktik;
 namespace praktik.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240323054825_initial")]
-    partial class initial
+    [Migration("20240325110617_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
